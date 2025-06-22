@@ -1,166 +1,86 @@
-# Task Manager API Server
+# 📝 Task Manager API
 
-This project is a simple but complete full-stack application featuring a RESTful API backend built with Node.js, Express, and MongoDB. It includes a basic frontend to interact with the API, allowing users to perform CRUD (Create, Read, Update, Delete) operations on a list of tasks.
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
 
-This serves as a practical example for creating a custom API server, integrating it with a database, and consuming it with a client-side application.
+A simple yet powerful RESTful API for a task management application, built with Node.js and Express. This project includes a comprehensive test suite using Jest to ensure code quality and reliability.
 
-## Tech Stack
+## ✨ Features
 
--   **Backend**: Node.js, Express.js
--   **Database**: MongoDB with Mongoose ODM
--   **Frontend**: HTML, CSS, vanilla JavaScript
-
-## Features
-
--   RESTful API with 4 endpoints.
--   Full CRUD functionality for tasks.
--   Simple, responsive frontend to manage tasks.
--   Structured, easy-to-understand codebase.
+-   **Full CRUD Functionality**: Create, Read, Update, and Delete tasks.
+-   **RESTful API**: Clean, predictable, and well-structured API endpoints.
+-   **Comprehensive Test Suite**: Includes unit, integration, and API tests.
+-   **High Test Coverage**: Aims for high code coverage to ensure reliability.
+-   **Interactive Frontend**: A simple client-side application to interact with the API.
 
 ---
 
-## Getting Started
+## 🚀 Getting Started & Running Tests
 
 ### Prerequisites
 
--   Node.js (which includes npm) installed on your machine.
--   MongoDB installed and running locally.
+-   [**Node.js**](https://nodejs.org/) (v14 or newer)
+-   [**npm**](https://www.npmjs.com/) (comes with Node.js)
+-   [**MongoDB**](https://www.mongodb.com/try/download/community) installed and running (for local development).
 
 ### Installation & Setup
 
-1.  **Clone the repository (or create the files locally):**
-    > If this were a real Git repo, you would clone it. For now, create the project folder and all the files as shown in the file structure.
-
-2.  **Navigate to the project directory:**
+1.  **Clone the repository:**
     ```sh
-    cd task-manager-api
+    git clone [https://github.com/Bipin2004/keyploy-api.git](https://github.com/Bipin2004/keyploy-api.git)
+    cd keyploy-api
     ```
 
-3.  **Install dependencies:**
-    > This command reads the package.json file and installs all the necessary libraries (Express, Mongoose, etc.).
+2.  **Install dependencies:**
+    This command installs both production and development dependencies.
     ```sh
     npm install
     ```
 
-4.  **Create your environment file:**
-    > Create a file named `.env` in the root of your project and add the following content. This keeps your database credentials private.
+3.  **Set up environment variables:**
+    Create a `.env` file in the root of the project.
     ```env
     PORT=3000
     MONGO_URI=mongodb://localhost:27017/taskdb
     ```
 
-5.  **Run the server:**
-    > This command starts the Node.js server.
-    ```sh
-    npm start
-    ```
-    > For development, you can use `nodemon` which automatically restarts the server on file changes:
+4.  **Run the application server:**
     ```sh
     npm run dev
     ```
-    > You should see the following output in your terminal:
-    ```
-    Server is running on http://localhost:3000
-    Successfully connected to MongoDB!
-    ```
-
-### Using the Frontend
-
-Open your web browser and navigate to `http://localhost:3000`. You will see the Task Manager web application, where you can add, view, complete, and delete tasks.
 
 ---
 
-## API Documentation
+## 🧪 Testing
 
-Here are the details for the 4 custom API endpoints you have created. You can test these with tools like Postman or `curl`.
+This project uses **Jest** for testing and **Supertest** for API endpoint verification. An in-memory MongoDB server is used to ensure tests are isolated and fast.
 
-**Base URL:** `http://localhost:3000/api/tasks`
+### Running the Tests
 
-### 1. Get All Tasks
+Execute the following commands from the project root:
 
--   **Method**: `GET`
--   **Endpoint**: `/`
--   **Description**: Retrieves a list of all tasks, sorted by creation date (newest first).
--   **Success Response (200 OK)**:
-    ```json
-    [
-        {
-            "_id": "6855848aef7b3e23e04dd7a4",
-            "title": "Python",
-            "description": "Learn python",
-            "completed": false,
-            "createdAt": "2025-06-20T15:55:54.916Z",
-            "updatedAt": "2025-06-20T15:55:54.916Z",
-            "__v": 0
-        },
-        {
-            "_id": "6855428d3a32b0e23e84b11a",
-            "title": "Node.js",
-            "description": "Complete it",
-            "completed": false,
-            "createdAt": "2025-06-20T11:14:21.141Z",
-            "updatedAt": "2025-06-20T11:14:21.141Z",
-            "__v": 0
-        }
-    ]
+-   **Run all tests once:**
+    ```sh
+    npm test
     ```
 
-### 2. Create a New Task
-
--   **Method**: `POST`
--   **Endpoint**: `/`
--   **Description**: Adds a new task to the database.
--   **Request Body (JSON)**:
-    ```json
-    {
-        "title": "Write API Documentation",
-        "description": "Document all endpoints in the README file."
-    }
-    ```
--   **Success Response (201 Created)**:
-    ```json
-    {
-        "title": "Write API Documentation",
-        "description": "Document all endpoints in the README file.",
-        "completed": false,
-        "_id": "685584bdef7b3e23e04dd7a8",
-        "createdAt": "2025-06-20T15:56:45.399Z",
-        "updatedAt": "2025-06-20T15:56:45.399Z",
-        "__v": 0
-    }
+-   **Run tests in watch mode (re-runs on file changes):**
+    ```sh
+    npm run test:watch
     ```
 
-### 3. Update a Task
-
--   **Method**: `PUT`
--   **Endpoint**: `/:id` (e.g., `/685584bdef7b3e23e04dd7a8`)
--   **Description**: Updates an existing task by its ID. You can update the `title`, `description`, or `completed` status.
--   **Request Body (JSON)**:
-    ```json
-    {
-        "completed": true
-    }
+-   **Run tests and generate a coverage report:**
+    ```sh
+    npm run test:coverage
     ```
--   **Success Response (200 OK)**:
-    ```json
-    {
-        "_id": "685584bdef7b3e23e04dd7a8",
-        "title": "Write API Documentation",
-        "description": "Document all endpoints in the README file.",
-        "completed": true,
-        "createdAt": "2025-06-20T15:56:45.399Z",
-        "updatedAt": "2025-06-20T15:57:30.419Z",
-        "__v": 0
-    }
-    ```
+    This will create a `coverage` directory. You can view the detailed HTML report by opening `coverage/lcov-report/index.html` in your browser.
 
-### 4. Delete a Task
+### Test Coverage Report
 
--   **Method**: `DELETE`
--   **Endpoint**: `/:id` (e.g., `/685584bdef7b3e23e04dd7a8`)
--   **Description**: Deletes a task from the database by its ID.
--   **Success Response (200 OK)**:
-    ```json
-    {
-        "message": "Task is deleted successfully"
-    }
+Here is a screenshot of the test coverage achieved for this project. The goal is to ensure all critical logic in the models and API routes is thoroughly tested.
+
+**(Action Required: After running `npm run test:coverage`, take a screenshot of the terminal output or the HTML report and embed it here.)**
+
+![Test Coverage Screenshot](https://placehold.co/800x200/f0f0f0/333?text=PASTE+YOUR+COVERAGE+SCREENSHOT+HERE)
