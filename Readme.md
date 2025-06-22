@@ -162,6 +162,5 @@ Here are the details for the 4 custom API endpoints you have created. You can te
 -   **Success Response (200 OK)**:
     ```json
     {
-        "message": "Task deleted successfully"
+        "message": "Task is deleted successfully"
     }
-    
