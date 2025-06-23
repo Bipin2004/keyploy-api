@@ -83,4 +83,4 @@ Here is a screenshot of the test coverage achieved for this project. The goal is
 
 **(Action Required: After running `npm run test:coverage`, take a screenshot of the terminal output or the HTML report and embed it here.)**
 
-![Test Coverage Screenshot](https://placehold.co/800x200/f0f0f0/333?text=PASTE+YOUR+COVERAGE+SCREENSHOT+HERE)
+![Test Coverage Report](./assets/test-coverage-report.png)
